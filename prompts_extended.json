@@ -1,0 +1,43 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "title": "美少女角色",
+      "category": "anime",
+      "tags": ["anime", "girl", "school"],
+      "positive": "beautiful anime girl, long hair, blue eyes, school uniform, detailed face, high quality, masterpiece",
+      "negative": "nsfw, worst quality, low quality, bad anatomy, bad hands, missing fingers, blurry",
+      "settings": {
+        "steps": 30,
+        "cfg": 7,
+        "sampler": "DPM++ 2M SDE"
+      },
+      "author": "用户A",
+      "created_at": "2024-01-15",
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "title": "猫娘角色",
+      "category": "neko",
+      "tags": ["catgirl", "cute", "kawaii"],
+      "positive": "cat girl, cute, neko ears, sitting, indoor scene, soft lighting, kawaii style",
+      "negative": "nsfw, worst quality, low quality, bad anatomy, deformed, blurry",
+      "settings": {
+        "steps": 25,
+        "cfg": 6,
+        "sampler": "Euler a"
+      },
+      "author": "用户B",
+      "created_at": "2024-01-16",
+      "priority": "medium",
+      "reference_image": "path/to/reference.jpg"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "total_prompts": 2,
+    "created_by": "批量生成工具",
+    "description": "扩展的提示词文件示例"
+  }
+}

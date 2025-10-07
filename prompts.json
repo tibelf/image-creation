@@ -1,0 +1,604 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of a handsome chinese man, long black hair tied with ribbon, wearing red and black hanfu, gentle eyes, soft lighting, bamboo shadow background, elegant oriental atmosphere, fine detailed anime illustration",
+      "negative": "lowres, blurry, bad anatomy, deformed face, extra fingers, feminine, watermark, text, sketch, 3d render"
+    },
+    {
+      "id": 2,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of noble chinese man, long hair, golden hairpin, white robe with red trim, warm sunlight through lattice window, serene expression, ancient chinese palace interior, soft light, delicate brushwork",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text, extra fingers, distorted face"
+    },
+    {
+      "id": 3,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, handsome chinese male, long flowing hair, traditional black robe with gold pattern, calm and confident eyes, warm light and shadow, cinematic illustration, fine detailed lineart",
+      "negative": "lowres, bad anatomy, cartoonish, weak face, blurry, watermark, text"
+    },
+    {
+      "id": 4,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), elegant chinese scholar, upper body, long hair, holding a fan, wearing light blue hanfu, soft morning light, poetic expression, traditional oriental garden background, ink painting style, refined shading",
+      "negative": "lowres, bad hands, ugly face, overexposed, cartoonish, watermark, logo"
+    },
+    {
+      "id": 5,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of chinese man with long brown hair, wearing crimson robe with golden embroidery, candlelight reflection on his face, gentle smile, noble expression, elegant anime illustration",
+      "negative": "lowres, deformed, blurry, childlike, text, watermark, overexposed, extra limbs"
+    },
+    {
+      "id": 6,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), chinese noble male, upper body, dark hair loosely tied, deep gaze, wearing dark hanfu with gold lines, dim lantern background, warm rim light, painterly anime style, fine detail",
+      "negative": "lowres, bad anatomy, flat color, 3d render, watermark, extra fingers"
+    },
+    {
+      "id": 7,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of refined chinese male, white robe with light blue sash, standing by window with bamboo shadows, calm and wise expression, sunlight glow, fine anime-style detailing",
+      "negative": "lowres, bad anatomy, feminine, deformed face, watermark, logo"
+    },
+    {
+      "id": 8,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), elegant oriental man, upper body, wearing dark blue robe, subtle smile, calligraphy scroll background, cinematic light, detailed fabric folds, beautiful illustration",
+      "negative": "lowres, deformed, bad anatomy, blurry, watermark, text"
+    },
+    {
+      "id": 9,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of handsome chinese man, hair flowing in wind, wearing white and gold hanfu, confident expression, sunset lighting, ink painting atmosphere, high quality anime artwork",
+      "negative": "lowres, extra limbs, blurry, watermark, text, bad anatomy"
+    },
+    {
+      "id": 10,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), chinese prince upper body portrait, long hair, jade crown, red and gold robe, candlelit hall background, serious gaze, high contrast warm tones, exquisite anime art",
+      "negative": "lowres, blurry, overexposed, cartoonish, watermark, text, deformed"
+    },
+    {
+      "id": 11,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of graceful chinese male, black hair tied back, wearing white hanfu with light golden edges, gentle expression, morning light through window, subtle shading, traditional asian elegance",
+      "negative": "lowres, blurry, deformed, bad hands, watermark, extra limbs"
+    },
+    {
+      "id": 12,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome oriental man, upper body portrait, deep eyes, dark red hanfu, misty background, refined expression, soft ambient light, high detail anime painting",
+      "negative": "lowres, bad anatomy, cartoonish, feminine, overexposed, text"
+    },
+    {
+      "id": 13,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of noble chinese man, long black hair, wearing dark robe with golden trim, standing by window with light falloff, serious expression, elegant shading, cinematic tone",
+      "negative": "lowres, blurry, extra fingers, 3d render, watermark, distorted face"
+    },
+    {
+      "id": 14,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, handsome scholar, black hair in bun, holding bamboo scroll, wearing blue robe, warm light, gentle aura, traditional ink wash background",
+      "negative": "lowres, blurry, flat color, bad anatomy, watermark, extra fingers"
+    },
+    {
+      "id": 15,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), chinese nobleman upper body, black robe with red sash, confident eyes, background of palace lanterns, rim light effect, detailed anime-style rendering",
+      "negative": "lowres, blurry, deformed, overexposed, watermark, text"
+    },
+    {
+      "id": 16,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of chinese man with brown hair, wearing dark green hanfu, background mist and sunlight, calm look, elegant anime illustration",
+      "negative": "lowres, blurry, bad anatomy, extra fingers, text, watermark"
+    },
+    {
+      "id": 17,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, handsome man, black hair loose around shoulders, dark robe with gold accent, subtle light reflection, elegant composition, fine linework",
+      "negative": "lowres, blurry, cartoonish, bad anatomy, watermark, distorted face"
+    },
+    {
+      "id": 18,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), elegant chinese male, upper body, wearing white and silver robe, light from paper lantern, peaceful expression, refined anime painting, high detail",
+      "negative": "lowres, blurry, deformed, watermark, text, flat color"
+    },
+    {
+      "id": 19,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of noble chinese man, upper body, red hanfu with golden embroidery, serious yet calm expression, traditional interior lighting, fine shading, painterly anime style",
+      "negative": "lowres, bad anatomy, overexposed, watermark, 3d render, text"
+    },
+    {
+      "id": 20,
+      "style": "guofeng",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome oriental male portrait, long hair tied, dark robe, warm sunlight highlighting face, bamboo forest background blur, elegant anime illustration, soft texture",
+      "negative": "lowres, blurry, distorted, extra fingers, watermark, text"
+    },
+    {
+      "id": 21,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of a heroic chinese swordsman, long dark hair flowing, sharp eyes, wearing black and silver armor, holding sword hilt near chest, strong lighting contrast, dramatic background, detailed anime style",
+      "negative": "lowres, blurry, bad anatomy, distorted face, watermark, cartoonish, feminine, text"
+    },
+    {
+      "id": 22,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of fearless warrior, upper body, long hair tied back, red scarf fluttering, intense gaze, stormy sky background, glowing particles, cinematic lighting, heroic pose, fine anime illustration",
+      "negative": "lowres, deformed, blurry, bad anatomy, extra fingers, watermark, 3d render"
+    },
+    {
+      "id": 23,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), chinese martial artist portrait, upper body, hair loose, wearing dark robe, blade reflection lighting on face, strong jawline, serious expression, epic anime art style",
+      "negative": "lowres, blurry, bad anatomy, cartoonish, watermark, text"
+    },
+    {
+      "id": 24,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of confident swordsman, wind blowing hair, silver hanfu, moonlight reflecting on blade, heroic aura, detailed lighting, dynamic anime style",
+      "negative": "lowres, bad anatomy, distorted, blurry, watermark, logo"
+    },
+    {
+      "id": 25,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of rugged chinese warrior, short messy hair, scar on cheek, dark armor, background sparks and smoke, dramatic lighting, strong pose, anime realism style",
+      "negative": "lowres, blurry, deformed, text, watermark, childlike"
+    },
+    {
+      "id": 26,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of stoic hero, long hair in ponytail, silver sword behind shoulder, dusk lighting, dust in air, determined eyes, cinematic atmosphere, detailed illustration",
+      "negative": "lowres, blurry, distorted, bad anatomy, watermark, text"
+    },
+    {
+      "id": 27,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), chinese warrior male portrait, dark blue robe, hand on sword hilt, background of burning battlefield, rim light on face, heroic and calm expression, detailed anime shading",
+      "negative": "lowres, bad anatomy, blurry, watermark, text, feminine"
+    },
+    {
+      "id": 28,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of warrior, long hair flowing, wearing crimson robe, cold expression, wind and dust background, dramatic side light, cinematic anime rendering",
+      "negative": "lowres, bad anatomy, blurry, watermark, text, extra fingers"
+    },
+    {
+      "id": 29,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of martial artist, long hair tied, dark grey armor, foggy mountains behind, subtle rim light, serious look, sharp anime linework",
+      "negative": "lowres, blurry, bad anatomy, 3d render, watermark, overexposed"
+    },
+    {
+      "id": 30,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, chinese hero with long black hair, golden armor shoulders, fierce eyes, rain falling, glowing sword edge light, epic atmosphere, highly detailed anime art",
+      "negative": "lowres, bad anatomy, blurry, watermark, distorted face, text"
+    },
+    {
+      "id": 31,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), confident swordsman portrait, red and brown robe, sunlight beam across face, mountain wind blowing hair, heroic aura, fine anime style",
+      "negative": "lowres, bad anatomy, overexposed, feminine, watermark, text"
+    },
+    {
+      "id": 32,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of vigilant chinese warrior, upper body, wearing black hanfu with armor plates, serious eyes, background forest haze, cinematic composition, strong lighting contrast",
+      "negative": "lowres, blurry, deformed, cartoonish, watermark, text"
+    },
+    {
+      "id": 33,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of young hero, hair flying, holding sword hilt with both hands, cloudy sunset background, golden highlights, anime painting style",
+      "negative": "lowres, blurry, bad anatomy, extra fingers, watermark, text"
+    },
+    {
+      "id": 34,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, fearless male warrior, dark hair, red scarf, scars, strong jawline, smoke background, hard light shadow, detailed anime art",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 35,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of battle-worn swordsman, shoulder armor, wind and sparks, intense look, glowing sword reflection, heroic atmosphere, painterly anime style",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 36,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, calm martial hero, wearing white hanfu, cloudy background, wind blowing robe, cinematic light contrast, elegant but strong aura",
+      "negative": "lowres, bad anatomy, blurry, watermark, 3d render"
+    },
+    {
+      "id": 37,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of warrior with tied hair, holding sheathed sword, rain and lightning behind, serious eyes, high contrast anime shading, fine detailed illustration",
+      "negative": "lowres, blurry, distorted, text, watermark, extra fingers"
+    },
+    {
+      "id": 38,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of chinese fighter, messy hair, dirt on face, red armor, flame glow background, intense gaze, cinematic close-up, painterly detail",
+      "negative": "lowres, bad anatomy, blurry, watermark, 3d render"
+    },
+    {
+      "id": 39,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, dark-haired warrior, robe fluttering, half shadow lighting, focused eyes, ancient battlefield ambiance, detailed anime art",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 40,
+      "style": "wuxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of proud swordsman, standing straight, long black hair, black and red hanfu, glowing embers background, heroic expression, fine detailed anime painting",
+      "negative": "lowres, blurry, bad anatomy, watermark, extra fingers, text"
+    },
+    {
+      "id": 41,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of handsome immortal man, long silver hair, calm eyes, wearing flowing white robe with blue edges, surrounded by mist and glowing particles, divine atmosphere, elegant anime painting",
+      "negative": "lowres, blurry, bad anatomy, overexposed, feminine, watermark, text"
+    },
+    {
+      "id": 42,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), celestial chinese male portrait, long hair floating, golden aura, wearing pale robe, glowing lotus background, serene expression, fine detail, ethereal anime art",
+      "negative": "lowres, blurry, bad anatomy, extra fingers, watermark, 3d render"
+    },
+    {
+      "id": 43,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of immortal cultivator, upper body, long black hair, blue robe, energy light swirling around, glowing eyes, mountain clouds background, fantasy anime style",
+      "negative": "lowres, blurry, bad anatomy, cartoonish, watermark, text"
+    },
+    {
+      "id": 44,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, wise immortal male, white robe, silver headband, soft lighting, floating spirit fireflies, heavenly background, refined anime illustration",
+      "negative": "lowres, bad anatomy, distorted, blurry, watermark, logo"
+    },
+    {
+      "id": 45,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of calm cultivator, upper body, dark hair, glowing blue aura, ancient temple ruins behind, divine expression, misty scene, fine anime detail",
+      "negative": "lowres, blurry, deformed, watermark, text, extra fingers"
+    },
+    {
+      "id": 46,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome celestial man, white flowing hair, upper body, glowing aura around shoulders, holding jade talisman, ethereal light, detailed anime fantasy art",
+      "negative": "lowres, bad anatomy, flat color, watermark, 3d render, text"
+    },
+    {
+      "id": 47,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, young cultivator, long black hair tied, wearing white robe, mist swirling, glowing charm symbols in air, calm and focused expression",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 48,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of divine chinese male, silver robe, ethereal wings of light behind, glowing eyes, sacred mountain peaks, anime fantasy illustration",
+      "negative": "lowres, blurry, deformed, watermark, 3d render, text"
+    },
+    {
+      "id": 49,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of powerful immortal, dark robe with light runes, spirit mist swirling, ancient symbols glowing, fine detailed fantasy anime style",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 50,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), serene cultivator portrait, long hair, pale robe, floating petals, sunlight through mist, peaceful gaze, soft glowing light, detailed anime art",
+      "negative": "lowres, blurry, deformed, bad anatomy, watermark, extra fingers"
+    },
+    {
+      "id": 51,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of immortal scholar, white hair, holding scroll, light aura around, golden sky, divine expression, elegant anime fantasy style",
+      "negative": "lowres, blurry, bad anatomy, watermark, cartoonish, text"
+    },
+    {
+      "id": 52,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of celestial male, upper body, wearing flowing robe, mist background, soft halo light, calm and noble look, anime fantasy painting",
+      "negative": "lowres, bad anatomy, blurry, watermark, text, distorted face"
+    },
+    {
+      "id": 53,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome cultivator, upper body, dark long hair, wearing grey robe, spirit light particles, glowing blue charm symbols, misty atmosphere, detailed anime art",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 54,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of tranquil immortal, upper body, hair floating, gentle eyes, surrounded by glowing talismans, calm aura, fine anime detail, fantasy tone",
+      "negative": "lowres, blurry, distorted, watermark, text"
+    },
+    {
+      "id": 55,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, wise cultivator, long hair, wearing deep blue robe, golden spiritual circle behind, calm face, ethereal anime illustration",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render, text"
+    },
+    {
+      "id": 56,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of immortal warrior, white robe, silver armor pieces, glowing energy surrounding body, heroic gaze, high quality anime fantasy art",
+      "negative": "lowres, blurry, distorted, watermark, text, overexposed"
+    },
+    {
+      "id": 57,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome celestial man, upper body portrait, hair blowing, pale blue robe, glowing halo, floating spiritual symbols, ethereal background, detailed anime painting",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render, text"
+    },
+    {
+      "id": 58,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of elegant cultivator, long black hair, white robe, mist and sunlight, glowing orbs, serene expression, painterly anime style",
+      "negative": "lowres, blurry, bad anatomy, watermark, distorted face"
+    },
+    {
+      "id": 59,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, powerful immortal male, dark robe, spirit flames around, glowing charm light, divine aura, high detail anime fantasy art",
+      "negative": "lowres, blurry, bad anatomy, watermark, overexposed, text"
+    },
+    {
+      "id": 60,
+      "style": "xianxia",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), celestial male portrait, upper body, long hair, wearing robe of light, glowing mist background, divine calm gaze, painterly anime illustration, elegant and serene atmosphere",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, cartoonish"
+    },
+    {
+      "id": 61,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of handsome asian man, black hair, sharp jawline, warm skin tone, cinematic lighting, realistic shading, subtle expression, anime semi-realistic painting style",
+      "negative": "lowres, blurry, overexposed, deformed, watermark, text"
+    },
+    {
+      "id": 62,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic anime portrait of chinese man, upper body, short dark hair, confident gaze, neutral background, professional lighting, natural shadows, fine texture details",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, cartoonish"
+    },
+    {
+      "id": 63,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), close-up upper body portrait, handsome asian male, realistic anime shading, rim light, focused expression, soft depth of field, 8k quality illustration",
+      "negative": "lowres, blurry, bad anatomy, 3d render, watermark, text"
+    },
+    {
+      "id": 64,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of a strong chinese man, slightly tanned skin, wearing dark modern hanfu, cinematic backlight, painterly semi-realistic anime rendering",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 65,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of handsome asian man, upper body, natural lighting, fine pores and facial texture, reflective eyes, realistic tone, detailed anime style",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 66,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, young chinese man, messy black hair, half shadow face lighting, cinematic tone, painterly anime realism, fine line detail",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 67,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic anime portrait, upper body, asian male, dark blue background, studio lighting, calm gaze, warm skin color, detailed anime illustration",
+      "negative": "lowres, blurry, overexposed, watermark, 3d render"
+    },
+    {
+      "id": 68,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of chinese man, long black hair, realistic anime painting, sunlight hitting face, fine detail texture, expressive eyes, calm and confident atmosphere",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, cartoonish"
+    },
+    {
+      "id": 69,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), close-up portrait, asian male, black hair, fine facial features, soft rim light, subtle depth of field, realistic lighting, anime semi-realistic shading",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 70,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of realistic anime man, brown hair, relaxed posture, soft background blur, warm light, detailed brush strokes, professional portrait look",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render"
+    },
+    {
+      "id": 71,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic asian male portrait, upper body, sharp face features, hair highlights, cinematic lighting, soft color grading, fine detailed anime realism",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 72,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), handsome asian man, upper body, wearing casual robe, natural soft light, realistic tone, skin texture visible, anime painterly realism",
+      "negative": "lowres, blurry, bad anatomy, watermark, extra fingers, cartoonish"
+    },
+    {
+      "id": 73,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, young man, short black hair, realistic shadows, rim light accent, confident expression, anime realism hybrid style",
+      "negative": "lowres, blurry, overexposed, watermark, text"
+    },
+    {
+      "id": 74,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic portrait of chinese male, upper body, clean lighting, detailed clothing texture, calm gaze, realistic anime tone",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 75,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body of chinese man with dark brown hair, warm light reflection, fine facial details, anime realism painting style, cinematic atmosphere",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render, text"
+    },
+    {
+      "id": 76,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic anime portrait, asian male, short messy hair, side lighting, natural pose, high quality detail, painterly brushwork",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 77,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, chinese man with medium-length hair, realistic anime shading, cinematic rim light, strong facial structure, high definition detail",
+      "negative": "lowres, blurry, bad anatomy, watermark, overexposed"
+    },
+    {
+      "id": 78,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), semi-realistic anime painting, upper body, asian male with dark eyes, reflective skin tone, fine detailed lighting, calm expression, warm tone",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render"
+    },
+    {
+      "id": 79,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), realistic anime male portrait, black hair, soft shadowed background, detailed fabric texture, fine skin lighting, expressive eyes, high detail illustration",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 80,
+      "style": "realistic",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, handsome asian male, natural light, warm shadow, realistic anime linework, painterly look, detailed facial structure",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, cartoonish"
+    },
+    {
+      "id": 81,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of handsome asian male, cyberpunk chinese style, glowing blue neon lines, black futuristic hanfu, confident gaze, dark city background, rim light effect, detailed anime illustration",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, overexposed"
+    },
+    {
+      "id": 82,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of cyber warrior, upper body, short black hair, glowing red visor, futuristic armor with gold accents, neon reflections, high contrast lighting, detailed anime art",
+      "negative": "lowres, blurry, bad anatomy, 3d render, watermark, cartoonish"
+    },
+    {
+      "id": 83,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), cyber-oriental male portrait, upper body, long black hair, mechanical earrings, blue neon background, subtle holographic light, stylish expression, fine anime detailing",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 84,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), futuristic chinese swordsman portrait, upper body, wearing metallic hanfu with glowing symbols, neon reflections on face, serious eyes, dark city alley background",
+      "negative": "lowres, blurry, bad anatomy, overexposed, watermark, text"
+    },
+    {
+      "id": 85,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of cyber monk, shaved sides hairstyle, glowing tattoos on neck, red and blue rim light, mechanical halo behind head, cinematic lighting, detailed anime cyberpunk art",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render, text"
+    },
+    {
+      "id": 86,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of chinese male hacker, upper body, dark jacket with digital glow patterns, neon reflections, cyberpunk city background, focused expression, fine anime realism",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, cartoonish"
+    },
+    {
+      "id": 87,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), cyber samurai upper body, long black hair, neon katana glow reflecting on face, red and teal lighting, futuristic armor, anime cyberpunk detail",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, overexposed"
+    },
+    {
+      "id": 88,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of elegant asian male, upper body, traditional hanfu with cyber elements, glowing gold threads, futuristic background, fine light reflection, high quality anime art",
+      "negative": "lowres, blurry, bad anatomy, watermark, distorted"
+    },
+    {
+      "id": 89,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of cyber agent, short silver hair, glowing blue eyes, metallic collar, dark neon-lit background, cinematic contrast, high detail anime illustration",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 90,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), futuristic chinese male portrait, long flowing hair with neon highlights, mechanical accessories, glowing city skyline background, cool color palette, fine anime detailing",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 91,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, male cyber cultivator, black robe with circuit patterns, blue aura, neon mist background, calm and composed gaze, detailed anime fantasy style",
+      "negative": "lowres, blurry, bad anatomy, watermark, overexposed, text"
+    },
+    {
+      "id": 92,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), cyberpunk male portrait, upper body, red neon rim light, black coat, glowing interface patterns, reflective metal texture, futuristic asian aesthetic, high detail anime art",
+      "negative": "lowres, blurry, distorted, watermark, 3d render, text"
+    },
+    {
+      "id": 93,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of calm asian male, upper body, futuristic hanfu, digital lotus hologram background, blue rim light, elegant cyber-oriental fusion, anime detail rendering",
+      "negative": "lowres, blurry, bad anatomy, watermark, cartoonish, text"
+    },
+    {
+      "id": 94,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait of asian warrior, wearing black and red cyber armor, glowing sword reflection, misty neon background, serious expression, detailed anime cyberpunk art",
+      "negative": "lowres, blurry, deformed, watermark, text"
+    },
+    {
+      "id": 95,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), cyber wizard portrait, upper body, long hair, glowing energy circuit tattoos, dark futuristic temple, green and purple neon lighting, painterly anime detail",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, overexposed"
+    },
+    {
+      "id": 96,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of chinese male with neon face paint, black jacket, glowing tech ornaments, blue ambient light, detailed anime cyberpunk realism",
+      "negative": "lowres, blurry, bad anatomy, watermark, 3d render, text"
+    },
+    {
+      "id": 97,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), futuristic male portrait, upper body, long dark hair, glowing eyes, neon city reflections, metallic accessories, cinematic anime lighting",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, overexposed"
+    },
+    {
+      "id": 98,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), upper body portrait, cyber monk with golden tattoos, glowing halo, purple neon smoke background, calm expression, futuristic oriental aesthetic",
+      "negative": "lowres, blurry, distorted, watermark, text"
+    },
+    {
+      "id": 99,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), portrait of cyber samurai, upper body, red neon reflections on face, metallic shoulder plates, urban rain background, high contrast lighting, detailed anime illustration",
+      "negative": "lowres, blurry, bad anatomy, watermark, text"
+    },
+    {
+      "id": 100,
+      "style": "cyber",
+      "positive": "(masterpiece, best quality, ultra-detailed:1.3), elegant futuristic chinese man, upper body portrait, black and gold hanfu with neon circuit designs, glowing lights around, confident gaze, detailed anime cyberpunk painting",
+      "negative": "lowres, blurry, bad anatomy, watermark, text, overexposed"
+    }
+  ]
+}
