@@ -116,46 +116,55 @@ class ComfyUIBatchGenerator:
             return json.load(f)
     
     def validate_workflow(self, workflow):
-        """验证工作流的完整性"""
+        """验证UI导出格式工作流的完整性"""
         if not isinstance(workflow, dict):
             return False, "工作流必须是字典格式"
         
-        for node_id, node in workflow.items():
-            # 检查节点ID是否为字符串格式的数字
-            if not isinstance(node_id, str) or not node_id.isdigit():
-                return False, f"节点ID格式错误: {node_id}"
-            
-            # 检查节点是否为字典且包含必要属性
-            if not isinstance(node, dict):
-                return False, f"节点 {node_id} 不是字典格式"
-            
-            if 'class_type' not in node:
-                return False, f"节点 {node_id} 缺少 class_type 属性"
+        # 检查是否包含nodes数组
+        if 'nodes' not in workflow:
+            return False, "工作流缺少nodes数组"
         
-        return True, "工作流验证通过"
+        nodes = workflow['nodes']
+        if not isinstance(nodes, list):
+            return False, "nodes必须是数组格式"
+        
+        # 验证每个节点
+        for i, node in enumerate(nodes):
+            if not isinstance(node, dict):
+                return False, f"节点 {i} 不是字典格式"
+            
+            if 'id' not in node:
+                return False, f"节点 {i} 缺少id属性"
+            
+            if 'type' not in node:
+                return False, f"节点 {node.get('id', i)} 缺少type属性"
+        
+        return True, "UI格式工作流验证通过"
     
     def find_text_encode_nodes(self, workflow):
-        """查找工作流中的文本编码节点"""
+        """查找UI格式工作流中的文本编码节点"""
         text_nodes = {}
         
-        for node_id, node in workflow.items():
+        nodes = workflow.get('nodes', [])
+        for node in nodes:
             if (isinstance(node, dict) and 
-                node.get('class_type') == 'CLIPTextEncode' and 
-                'inputs' in node and 
-                'text' in node['inputs']):
+                node.get('type') == 'CLIPTextEncode' and 
+                'widgets_values' in node and 
+                len(node['widgets_values']) > 0):
                 
-                current_text = str(node['inputs']['text']).lower()
+                node_id = node.get('id')
+                current_text = str(node['widgets_values'][0]).lower()
                 text_nodes[node_id] = {
                     'node': node,
-                    'text': node['inputs']['text'],
+                    'text': node['widgets_values'][0],
                     'is_negative': any(neg_word in current_text for neg_word in 
                                      ['nsfw', 'worst', 'low quality', 'bad', 'negative', 'ugly'])
                 }
         
         return text_nodes
     
-    def update_workflow_prompt(self, workflow, positive_prompt, negative_prompt):
-        """更新工作流中的提示词，保持原有结构完整性"""
+    def update_workflow_prompt(self, workflow, positive_prompt, negative_prompt, positive_node_id=6, negative_node_id=7):
+        """更新UI格式工作流中的提示词，直接通过节点ID指定"""
         # 首先验证原工作流
         is_valid, message = self.validate_workflow(workflow)
         if not is_valid:
@@ -169,28 +178,37 @@ class ComfyUIBatchGenerator:
         if not is_valid:
             raise ValueError(f"拷贝后工作流验证失败: {message}")
         
-        # 查找文本编码节点
-        text_nodes = self.find_text_encode_nodes(workflow_copy)
-        
-        if not text_nodes:
-            print("警告: 未找到任何CLIPTextEncode节点")
-            return workflow_copy
-        
-        # 更新提示词
+        # 直接通过节点ID更新提示词
         updated_count = 0
-        for node_id, node_info in text_nodes.items():
-            try:
-                if node_info['is_negative']:
-                    workflow_copy[node_id]['inputs']['text'] = negative_prompt
-                    print(f"更新负面提示词节点: {node_id}")
-                else:
-                    workflow_copy[node_id]['inputs']['text'] = positive_prompt  
-                    print(f"更新正面提示词节点: {node_id}")
-                updated_count += 1
-            except Exception as e:
-                print(f"更新节点 {node_id} 时出错: {str(e)}")
+        nodes = workflow_copy.get('nodes', [])
         
-        print(f"成功更新 {updated_count} 个提示词节点")
+        for node in nodes:
+            if not isinstance(node, dict) or 'id' not in node:
+                continue
+            
+            node_id = node.get('id')
+            
+            # 检查是否为CLIPTextEncode节点且有widgets_values
+            if (node.get('type') == 'CLIPTextEncode' and 
+                'widgets_values' in node and 
+                len(node['widgets_values']) > 0):
+                
+                try:
+                    if node_id == positive_node_id:
+                        node['widgets_values'][0] = positive_prompt
+                        print(f"更新正面提示词节点: {node_id}")
+                        updated_count += 1
+                    elif node_id == negative_node_id:
+                        node['widgets_values'][0] = negative_prompt
+                        print(f"更新负面提示词节点: {node_id}")
+                        updated_count += 1
+                except Exception as e:
+                    print(f"更新节点 {node_id} 时出错: {str(e)}")
+        
+        if updated_count == 0:
+            print(f"警告: 未找到ID为 {positive_node_id} 或 {negative_node_id} 的CLIPTextEncode节点")
+        else:
+            print(f"成功更新 {updated_count} 个提示词节点")
         
         # 最终验证
         is_valid, message = self.validate_workflow(workflow_copy)
@@ -198,6 +216,89 @@ class ComfyUIBatchGenerator:
             raise ValueError(f"更新后工作流验证失败: {message}")
         
         return workflow_copy
+    
+    def convert_ui_to_api_format(self, ui_workflow):
+        """将UI导出格式转换为API工作流格式"""
+        api_workflow = {}
+        links = ui_workflow.get('links', [])
+        
+        # 创建链接映射：link_id -> (source_node_id, source_output_index, target_node_id, target_input_name)
+        link_map = {}
+        for link in links:
+            if len(link) >= 6:
+                link_id, source_node, source_output, target_node, target_input, link_type = link[:6]
+                link_map[link_id] = {
+                    'source_node': source_node,
+                    'source_output': source_output,
+                    'target_node': target_node,
+                    'target_input': target_input
+                }
+        
+        nodes = ui_workflow.get('nodes', [])
+        for node in nodes:
+            if not isinstance(node, dict) or 'id' not in node:
+                continue
+            
+            node_id = str(node['id'])
+            
+            # 构建API格式的节点
+            api_node = {
+                'class_type': node.get('type', ''),
+                'inputs': {}
+            }
+            
+            # 处理连接输入
+            if 'inputs' in node:
+                for input_item in node['inputs']:
+                    input_name = input_item.get('name', '')
+                    link_id = input_item.get('link')
+                    
+                    if link_id is not None and link_id in link_map:
+                        link_info = link_map[link_id]
+                        api_node['inputs'][input_name] = [str(link_info['source_node']), link_info['source_output']]
+            
+            # 处理widgets_values
+            if 'widgets_values' in node and node['widgets_values']:
+                self._map_widgets_to_inputs(node, api_node)
+            
+            # 特殊处理CLIPTextEncode节点
+            if node.get('type') == 'CLIPTextEncode' and 'widgets_values' in node and len(node['widgets_values']) > 0:
+                api_node['inputs']['text'] = node['widgets_values'][0]
+            
+            api_workflow[node_id] = api_node
+        
+        return api_workflow
+    
+    def _map_widgets_to_inputs(self, ui_node, api_node):
+        """将widgets_values映射到API格式的inputs"""
+        node_type = ui_node.get('type', '')
+        widgets = ui_node.get('widgets_values', [])
+        
+        # 根据节点类型进行映射（这里只实现常见的几种）
+        if node_type == 'KSampler' and len(widgets) >= 7:
+            api_node['inputs'].update({
+                'seed': widgets[0],
+                'control_after_generate': widgets[1],  
+                'steps': widgets[2],
+                'cfg': widgets[3],
+                'sampler_name': widgets[4],
+                'scheduler': widgets[5],
+                'denoise': widgets[6]
+            })
+        elif node_type == 'EmptyLatentImage' and len(widgets) >= 3:
+            api_node['inputs'].update({
+                'width': widgets[0],
+                'height': widgets[1], 
+                'batch_size': widgets[2]
+            })
+        elif node_type == 'CheckpointLoaderSimple' and len(widgets) >= 1:
+            api_node['inputs']['ckpt_name'] = widgets[0]
+        elif node_type == 'LoraLoader' and len(widgets) >= 3:
+            api_node['inputs'].update({
+                'lora_name': widgets[0],
+                'strength_model': widgets[1],
+                'strength_clip': widgets[2]
+            })
     
     def save_debug_workflow(self, workflow, prompt_id, stage=""):
         """保存调试用的工作流文件"""
@@ -251,10 +352,17 @@ class ComfyUIBatchGenerator:
                     # 保存修改后的工作流（调试用）
                     self.save_debug_workflow(updated_workflow, prompt_data['id'], "updated")
                     
+                    # 将UI格式转换为API格式
+                    print("转换工作流格式...")
+                    api_workflow = self.convert_ui_to_api_format(updated_workflow)
+                    
+                    # 保存API格式的工作流（调试用）
+                    self.save_debug_workflow(api_workflow, prompt_data['id'], "api_format")
+                    
                     # 生成图片
                     print("正在生成图片...")
                     try:
-                        images = self.client.get_images(ws, updated_workflow)
+                        images = self.client.get_images(ws, api_workflow)
                         
                         # 保存图片
                         saved_count = 0
