@@ -27,7 +27,26 @@ class ComfyUIClient:
         p = {"prompt": prompt, "client_id": self.client_id}
         data = json.dumps(p).encode('utf-8')
         req = urllib.request.Request(f"http://{self.server_address}/prompt", data=data)
-        return json.loads(urllib.request.urlopen(req).read())
+        req.add_header('Content-Type', 'application/json')
+        
+        try:
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read())
+            return result
+        except urllib.error.HTTPError as e:
+            error_body = e.read().decode('utf-8')
+            print(f"HTTP错误 {e.code}: {e.reason}")
+            print(f"错误详情: {error_body}")
+            try:
+                error_json = json.loads(error_body)
+                if 'error' in error_json:
+                    print(f"ComfyUI错误信息: {error_json['error']}")
+            except:
+                pass
+            raise
+        except Exception as e:
+            print(f"发送提示词到队列时出错: {str(e)}")
+            raise
 
     def get_image(self, filename, subfolder, folder_type):
         """从ComfyUI获取生成的图片"""
@@ -70,15 +89,21 @@ class ComfyUIClient:
         return output_images
 
 class ComfyUIBatchGenerator:
-    def __init__(self, workflow_path, prompts_path, output_dir="output", server_address="127.0.0.1:8188"):
+    def __init__(self, workflow_path, prompts_path, output_dir="output", server_address="127.0.0.1:8188", debug=False):
         self.workflow_path = Path(workflow_path)
         self.prompts_path = Path(prompts_path)
         self.output_dir = Path(output_dir)
         self.server_address = server_address
         self.client = ComfyUIClient(server_address)
+        self.debug = debug
         
         # 创建输出目录
         self.output_dir.mkdir(exist_ok=True)
+        
+        # 创建调试目录
+        if self.debug:
+            self.debug_dir = self.output_dir / "debug"
+            self.debug_dir.mkdir(exist_ok=True)
         
     def load_workflow(self):
         """加载ComfyUI工作流"""
@@ -90,24 +115,104 @@ class ComfyUIBatchGenerator:
         with open(self.prompts_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     
+    def validate_workflow(self, workflow):
+        """验证工作流的完整性"""
+        if not isinstance(workflow, dict):
+            return False, "工作流必须是字典格式"
+        
+        for node_id, node in workflow.items():
+            # 检查节点ID是否为字符串格式的数字
+            if not isinstance(node_id, str) or not node_id.isdigit():
+                return False, f"节点ID格式错误: {node_id}"
+            
+            # 检查节点是否为字典且包含必要属性
+            if not isinstance(node, dict):
+                return False, f"节点 {node_id} 不是字典格式"
+            
+            if 'class_type' not in node:
+                return False, f"节点 {node_id} 缺少 class_type 属性"
+        
+        return True, "工作流验证通过"
+    
+    def find_text_encode_nodes(self, workflow):
+        """查找工作流中的文本编码节点"""
+        text_nodes = {}
+        
+        for node_id, node in workflow.items():
+            if (isinstance(node, dict) and 
+                node.get('class_type') == 'CLIPTextEncode' and 
+                'inputs' in node and 
+                'text' in node['inputs']):
+                
+                current_text = str(node['inputs']['text']).lower()
+                text_nodes[node_id] = {
+                    'node': node,
+                    'text': node['inputs']['text'],
+                    'is_negative': any(neg_word in current_text for neg_word in 
+                                     ['nsfw', 'worst', 'low quality', 'bad', 'negative', 'ugly'])
+                }
+        
+        return text_nodes
+    
     def update_workflow_prompt(self, workflow, positive_prompt, negative_prompt):
-        """更新工作流中的提示词"""
+        """更新工作流中的提示词，保持原有结构完整性"""
+        # 首先验证原工作流
+        is_valid, message = self.validate_workflow(workflow)
+        if not is_valid:
+            raise ValueError(f"原工作流验证失败: {message}")
+        
+        # 创建深拷贝
         workflow_copy = copy.deepcopy(workflow)
         
-        # 找到正面和负面提示词节点并更新
-        for node_id, node in workflow_copy.items():
-            if isinstance(node, dict) and 'class_type' in node:
-                if node['class_type'] == 'CLIPTextEncode':
-                    # 根据输入链接判断是正面还是负面提示词
-                    if 'inputs' in node and 'text' in node['inputs']:
-                        current_text = node['inputs']['text']
-                        # 简单的启发式判断：包含负面词汇的通常是负面提示词
-                        if any(neg_word in current_text.lower() for neg_word in ['nsfw', 'worst', 'low quality', 'bad']):
-                            node['inputs']['text'] = negative_prompt
-                        else:
-                            node['inputs']['text'] = positive_prompt
+        # 验证拷贝后的工作流
+        is_valid, message = self.validate_workflow(workflow_copy)
+        if not is_valid:
+            raise ValueError(f"拷贝后工作流验证失败: {message}")
+        
+        # 查找文本编码节点
+        text_nodes = self.find_text_encode_nodes(workflow_copy)
+        
+        if not text_nodes:
+            print("警告: 未找到任何CLIPTextEncode节点")
+            return workflow_copy
+        
+        # 更新提示词
+        updated_count = 0
+        for node_id, node_info in text_nodes.items():
+            try:
+                if node_info['is_negative']:
+                    workflow_copy[node_id]['inputs']['text'] = negative_prompt
+                    print(f"更新负面提示词节点: {node_id}")
+                else:
+                    workflow_copy[node_id]['inputs']['text'] = positive_prompt  
+                    print(f"更新正面提示词节点: {node_id}")
+                updated_count += 1
+            except Exception as e:
+                print(f"更新节点 {node_id} 时出错: {str(e)}")
+        
+        print(f"成功更新 {updated_count} 个提示词节点")
+        
+        # 最终验证
+        is_valid, message = self.validate_workflow(workflow_copy)
+        if not is_valid:
+            raise ValueError(f"更新后工作流验证失败: {message}")
         
         return workflow_copy
+    
+    def save_debug_workflow(self, workflow, prompt_id, stage=""):
+        """保存调试用的工作流文件"""
+        if not self.debug:
+            return
+        
+        filename = f"workflow_prompt_{prompt_id}_{stage}.json"
+        filepath = self.debug_dir / filename
+        
+        try:
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(workflow, f, indent=2, ensure_ascii=False)
+            print(f"调试工作流已保存: {filepath}")
+        except Exception as e:
+            print(f"保存调试工作流失败: {str(e)}")
     
     def generate_batch(self):
         """批量生成图片"""
@@ -129,33 +234,58 @@ class ComfyUIBatchGenerator:
                 try:
                     print(f"\n[{i}/{total_prompts}] 处理提示词 ID: {prompt_data['id']}")
                     print(f"正面提示词: {prompt_data['positive'][:50]}...")
+                    if self.debug:
+                        print(f"负面提示词: {prompt_data['negative'][:50]}...")
+                    
+                    # 保存原始工作流（调试用）
+                    self.save_debug_workflow(workflow, prompt_data['id'], "original")
                     
                     # 更新工作流
+                    print("更新工作流中的提示词...")
                     updated_workflow = self.update_workflow_prompt(
                         workflow, 
                         prompt_data['positive'], 
                         prompt_data['negative']
                     )
                     
+                    # 保存修改后的工作流（调试用）
+                    self.save_debug_workflow(updated_workflow, prompt_data['id'], "updated")
+                    
                     # 生成图片
                     print("正在生成图片...")
-                    images = self.client.get_images(ws, updated_workflow)
+                    try:
+                        images = self.client.get_images(ws, updated_workflow)
+                        
+                        # 保存图片
+                        saved_count = 0
+                        for node_id in images:
+                            for j, image_data in enumerate(images[node_id]):
+                                filename = f"prompt_{prompt_data['id']}_node_{node_id}_{j}.png"
+                                image_path = self.output_dir / filename
+                                
+                                with open(image_path, "wb") as f:
+                                    f.write(image_data)
+                                
+                                print(f"图片已保存: {image_path}")
+                                saved_count += 1
+                        
+                        if saved_count == 0:
+                            print("警告: 没有生成任何图片")
+                        else:
+                            print(f"提示词 {prompt_data['id']} 处理完成，生成 {saved_count} 张图片")
                     
-                    # 保存图片
-                    for node_id in images:
-                        for j, image_data in enumerate(images[node_id]):
-                            filename = f"prompt_{prompt_data['id']}_node_{node_id}_{j}.png"
-                            image_path = self.output_dir / filename
-                            
-                            with open(image_path, "wb") as f:
-                                f.write(image_data)
-                            
-                            print(f"图片已保存: {image_path}")
-                    
-                    print(f"提示词 {prompt_data['id']} 处理完成")
+                    except Exception as gen_error:
+                        print(f"生成图片时出错: {str(gen_error)}")
+                        if self.debug:
+                            import traceback
+                            traceback.print_exc()
+                        continue
                     
                 except Exception as e:
                     print(f"处理提示词 {prompt_data['id']} 时出错: {str(e)}")
+                    if self.debug:
+                        import traceback
+                        traceback.print_exc()
                     continue
             
             print(f"\n批量生成完成！图片保存在: {self.output_dir}")
@@ -183,6 +313,9 @@ def main():
     parser.add_argument('--server', '-s',
                        default='127.0.0.1:8188',
                        help='ComfyUI服务器地址 (默认: 127.0.0.1:8188)')
+    parser.add_argument('--debug', '-d',
+                       action='store_true',
+                       help='启用调试模式，保存工作流文件和详细错误信息')
     
     args = parser.parse_args()
     
@@ -204,13 +337,16 @@ def main():
     print(f"提示词文件: {prompts_path}")
     print(f"输出目录: {args.output}")
     print(f"服务器地址: {args.server}")
+    if args.debug:
+        print("调试模式: 已启用")
     
     # 创建生成器并开始批量生成
     generator = ComfyUIBatchGenerator(
         workflow_path=workflow_path,
         prompts_path=prompts_path,
         output_dir=args.output,
-        server_address=args.server
+        server_address=args.server,
+        debug=args.debug
     )
     
     generator.generate_batch()
