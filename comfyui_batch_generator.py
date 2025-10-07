@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import argparse
 import sys
+import copy
 
 class ComfyUIClient:
     def __init__(self, server_address="127.0.0.1:80"):
@@ -91,7 +92,7 @@ class ComfyUIBatchGenerator:
     
     def update_workflow_prompt(self, workflow, positive_prompt, negative_prompt):
         """更新工作流中的提示词"""
-        workflow_copy = json.deepcopy(workflow)
+        workflow_copy = copy.deepcopy(workflow)
         
         # 找到正面和负面提示词节点并更新
         for node_id, node in workflow_copy.items():
